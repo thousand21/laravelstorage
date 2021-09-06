@@ -15,6 +15,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $user=User::all();
+        return view('tableau',compact('user'));
     }
 
     /**
@@ -36,6 +38,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User;
+        $user->url=$request->url;
+        $user->nom=$request->nom;
+        $user->description=$request->description;
+        $user->save();
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -81,5 +90,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $user->delete();
+        return redirect()->route('user.destroy');
     }
 }
