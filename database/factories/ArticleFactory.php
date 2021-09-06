@@ -23,6 +23,16 @@ class ArticleFactory extends Factory
     {
         return [
             //
+            
+            "nom"=>$this->faker->lastName(),
+            
+            "description"=>$this->faker->realText($maxNbChars = 200, $indexSize = 2),
+            
+            "datePublication"=>$this->faker->dateTimeThisCentury(),
+            
+            "auteur"=>$this->faker->firstName('male'|'female'),
+            
+            "image"=>$this->faker->imageUrl($width = 640, $height = 480),
         ];
     }
 }
